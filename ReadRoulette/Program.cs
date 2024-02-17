@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ReadRoulette.Domain;
 using ReadRoulette.Infra;
@@ -19,6 +20,8 @@ internal class Program
                 b => b.MigrationsAssembly("ReadRoulette")));
 
         builder.Services.AddTransient<IBookService, BookService>();
+        builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+            .AddEntityFrameworkStores<AppDbContext>();
 
         var app = builder.Build();
 
@@ -32,6 +35,7 @@ internal class Program
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
+        app.MapIdentityApi<IdentityUser>();
 
         app.Run();
     }

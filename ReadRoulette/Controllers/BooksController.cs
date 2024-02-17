@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ReadRoulette.Domain;
 using ReadRoulette.Persistence;
 
@@ -22,6 +23,7 @@ public class BooksController(IBookService _bookService) : ControllerBase
   }
 
   [HttpPost]
+  [Authorize]
   public async Task<IActionResult> Post([FromBody] Book newBook)
   {
     var book = await _bookService.CreateBookAsync(newBook);
@@ -29,6 +31,7 @@ public class BooksController(IBookService _bookService) : ControllerBase
   }
 
   [HttpDelete("{id}")]
+  [Authorize]
   public async Task<IActionResult> Delete(int id)
   {
     var wasSuccessful = await _bookService.DeleteBookByIdAsync(id);
