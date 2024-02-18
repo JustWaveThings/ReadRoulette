@@ -12,6 +12,11 @@ public class BookService(
   IHttpContextAccessor _httpCtx,
   UserManager<IdentityUser> _userManager) : IBookService
 {
+	/// <summary>
+	/// Gets the id of the current <see cref="IdentityUser"/>.
+	/// </summary>
+	/// <returns>A string id.</returns>
+	/// <exception cref="Exception"></exception>
     private string GetUserId()
     {
         var currentUser = _httpCtx.HttpContext?.User ?? throw new Exception("A user was not present on the HttpContext.");
@@ -20,12 +25,24 @@ public class BookService(
         return userId;
     }
 
+	/// <summary>
+	/// Gets the latest <see cref="UserBookToRead"/> entry for a <see cref="IdentityUser"/>.
+	/// </summary>
+	/// <param name="userId">The id of the <see cref="IdentityUser"/>.</param>
+	/// <returns>A <see cref="UserBookToRead"/> entity.</returns>
 	private async Task<UserBookToRead?> GetLatestUserBookByUserId(string userId) =>
 		await _ctx.UserBookToReads
 			.Where(b => b.Order != 0 && b.ReaderId == userId)
 			.OrderBy(b => b.Order)
 			.FirstOrDefaultAsync();
 
+	/// <summary>
+	/// Creates a <see cref="UserBookToRead"/> model relationship between
+	/// a <see cref="IdentityUser"/> and <see cref="Book"/>.
+	/// </summary>
+	/// <param name="newBook">The <see cref="Book"/> to establish for the <see cref="IdentityUser"/>.</param>
+	/// <returns>The new <see cref="UserBookToRead"/> entity.</returns>
+	/// <exception cref="Exception"></exception>
     public async Task<List<UserBookToRead>> AddBookToReadListAsync(Book newBook)
     {
         string userId = GetUserId();
@@ -53,6 +70,11 @@ public class BookService(
         return await GetUserBookToReadByUserIdAsync(userId);
     }
 
+	/// <summary>
+	/// Creates a <see cref="Book"/> in the system.
+	/// </summary>
+	/// <param name="newBook">The <see cref="Book"/> to add.</param>
+	/// <returns>The created <see cref="Book"/>.</returns>
     public async Task<Book?> CreateBookAsync(Book newBook)
     {
         var result = _ctx.Books.Add(newBook);
@@ -61,6 +83,11 @@ public class BookService(
         return result.Entity;
     }
 
+	/// <summary>
+	/// Removes a single <see cref="Book"/> from the system.
+	/// </summary>
+	/// <param name="id">The id of the <see cref="Book"/> to remove.</param>
+	/// <returns>A boolean indicating success or failure.</returns>
     public async Task<bool> DeleteBookByIdAsync(int id)
     {
         if (await _ctx.Books.FindAsync(id) is not Book found)
@@ -71,6 +98,11 @@ public class BookService(
         return true;
     }
 
+	/// <summary>
+	/// Gets a single <see cref="Book"/> by its Id.
+	/// </summary>
+	/// <param name="id">The id of the <see cref="Book"/>.</param>
+	/// <returns>A <see cref="Book"/>.</returns>
     public async Task<Book?> GetBookByIdAsync(int id)
     {
         if (await _ctx.Books.FindAsync(id) is not Book found)
@@ -79,12 +111,36 @@ public class BookService(
         return found;
     }
 
+	/// <summary>
+	/// Gets a list of all <see cref="Book"/> in the system.
+	/// </summary>
+	/// <returns>A list of <see cref="Book"/>.</returns>
     public async Task<List<Book>> GetBooksListAsync() =>
         await _ctx.Books.ToListAsync();
 
+	/// <summary>
+	/// Gets a list of <see cref="UserBookToRead"/>.
+	/// </summary>
+	/// <param name="userId">The id of the current <see cref="IdentityUser"/>.</param>
+	/// <returns>A list of <see cref="UserBookToRead"/>.</returns>
     public async Task<List<UserBookToRead>> GetUserBookToReadByUserIdAsync(string userId) =>
         await _ctx.UserBookToReads.Where(b => b.ReaderId == userId).ToListAsync();
 
+	/// <summary>
+	/// Gets the current book the user is reading.
+	/// </summary>
+	/// <returns>A <see cref="UserBookToRead"/> for the <see cref="IdentityUser"/>.</returns>
+	public async Task<UserBookToRead?> GetCurrentBookToReadAsync()
+	{
+		string userId = GetUserId();
+		return await GetLatestUserBookByUserId(userId);
+	}
+
+	/// <summary>
+	/// Sets the current book the user is reading to Order 0. Returns the
+	/// following <see cref="UserBookToRead"/> based on Order.
+	/// </summary>
+	/// <returns>A <see cref="UserBookToRead"/> entity.</returns>
     public async Task<UserBookToRead?> GetNextBookToReadAsync()
     {
         string userId = GetUserId();
@@ -99,6 +155,11 @@ public class BookService(
 		return await GetLatestUserBookByUserId(userId);
     }
 
+	/// <summary>
+	/// Reads the list of <see cref="UserBookToRead"/> for a <see cref="IdentityUser"/>
+	/// and randomizes a reading order.
+	/// </summary>
+	/// <returns>A list of <see cref="UserBookToRead"/>.</returns>
     public async Task<List<UserBookToRead>> RandomizeBookListAsync()
     {
         string userId = GetUserId();
@@ -112,6 +173,11 @@ public class BookService(
 		return bookList;
     }
 
+	/// <summary>
+	/// Removes a <see cref="UserBookToRead"/> relationship by its Id.
+	/// </summary>
+	/// <param name="id">The primary id of the <see cref="UserBookToRead"/>.</param>
+	/// <returns>The new list of <see cref="UserBookToRead"/> for the <see cref="IdentityUser"/>.</returns>
     public async Task<List<UserBookToRead>> RemoveBookFromReadListAsync(int id)
     {
         string userId = GetUserId();
