@@ -162,6 +162,119 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Book Clubs",
+			"item": [
+				{
+					"name": "Get Book Club List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5112/api/bookclub",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5112",
+							"path": [
+								"api",
+								"bookclub"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Book Club",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Readsters\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5112/api/bookclub",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5112",
+							"path": [
+								"api",
+								"bookclub"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User Book Clubs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5112/api/bookclub/current-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5112",
+							"path": [
+								"api",
+								"bookclub",
+								"current-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book Clubs By User",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book Clubs By Owner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5112/api/bookclub/owner/d983cca1-7670-4478-8ffb-8003359ccb2c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5112",
+							"path": [
+								"api",
+								"bookclub",
+								"owner",
+								"d983cca1-7670-4478-8ffb-8003359ccb2c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book Club",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {

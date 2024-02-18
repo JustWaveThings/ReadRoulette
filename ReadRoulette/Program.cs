@@ -4,7 +4,7 @@ using ReadRoulette.Domain;
 using ReadRoulette.Infra;
 using ReadRoulette.Persistence;
 
-internal class Program
+public class Program
 {
     private static void Main(string[] args)
     {
@@ -21,6 +21,7 @@ internal class Program
                 b => b.MigrationsAssembly("ReadRoulette")));
 
         builder.Services.AddTransient<IBookService, BookService>();
+        builder.Services.AddTransient<IBookClubService, BookClubService>();
         builder.Services.AddIdentityApiEndpoints<IdentityUser>()
             .AddEntityFrameworkStores<AppDbContext>();
 
