@@ -19,5 +19,9 @@ An API built on .NET 8 serving as the back end for the ReadRoulette platform. Re
 
 1. Clone repo
 2. `cd` into `ReadRoulette/ReadRoulette`
-3. Run `dotnet ef database update`
-3. Run `dotnet run`
+3. Run `dotnet user-secrets init`
+4. Run `dotnet user-secrets set ConnectionStrings:DbConnectionString "Server=<db-server-here>;Database=ReadRoulette_Dev;Username=<user>;Password=<pw>"`
+5. Run `dotnet ef database update`
+6. Run `dotnet run`
+7. Import `ReadRoulette.postman_collection.json` into Postman
+8. Create a book in Postman.
