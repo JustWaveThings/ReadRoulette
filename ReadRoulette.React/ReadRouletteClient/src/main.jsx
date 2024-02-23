@@ -9,6 +9,8 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import './index.css'
+import requireAuth from "./requireAuth.js";
+import Dashboard from "./Dashboard.jsx";
 
 
 const router = createBrowserRouter(
@@ -16,24 +18,50 @@ const router = createBrowserRouter(
         <Route
             path="/"
             element={<Layout />}
-            errorElement={<h1>Error</h1>}
+            // errorElement={<h1>Error</h1>}
             >
+            <Route
+                index
+                element={<h1>Index Route</h1>}
+
+            />
             <Route
                 path="home"
                 element={<App/>}
+
             />
             <Route
                 path="login"
                 element={<h1>Login</h1>}
+
             />
             <Route
                 path="dashboard"
-                element={<h1>Dashboard</h1>}
+                element={<Dashboard/>}
+                loader={async ({request}) => await requireAuth(request)} />
+
+ {/*           <Route
+                path="bookclub"
+                element={<h1>Book Club</h1>}
+
             />
             <Route
+                path="about"
+                element={<h1>About</h1>}
+
+            />
+            <Route
+                path="contact"
+                element={<h1>Contact</h1>}
+
+            />*/}
+           {/* <Route
                 path="*"
                 element={<NotFound />}
-            />
+
+            />*/}
+
+
         </Route>
 
 ))
