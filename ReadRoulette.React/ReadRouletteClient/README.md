@@ -1,8 +1,10 @@
-# React + Vite
+# ReadRoulette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mobile-responsive React SPA built with Vite and React Router.
 
-Currently, two official plugins are available:
+## How to run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Follow steps to get backend up and running first: [Backend Readme](https://github.com/JustWaveThings/ReadRoulette/blob/4fa10264a51070a69e82ece11fdfc2e117b1aa9d/readme.md)
+2. `cd` into `ReadRoulette/ReadRoulette.React/ReadRouletteClient`
+3. Run `npm install`
+4. Run `npm run dev`
