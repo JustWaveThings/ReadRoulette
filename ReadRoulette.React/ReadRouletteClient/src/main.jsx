@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import Layout from './Layout.jsx'
 import NotFound from './NotFound.jsx'
-import Home from './Home.jsx'
+import Signup from "./Signup.jsx";
 import {
     createBrowserRouter, createRoutesFromElements, Route,
     RouterProvider,
@@ -36,30 +36,20 @@ const router = createBrowserRouter(
 
             />
             <Route
+                path="signup"
+                element={<Signup/>}
+            />
+            <Route
                 path="dashboard"
                 element={<Dashboard/>}
-                loader={async ({request}) => await requireAuth(request)} />
-
- {/*           <Route
-                path="bookclub"
-                element={<h1>Book Club</h1>}
+                loader={async ({request}) => await requireAuth(request)}
 
             />
             <Route
-                path="about"
-                element={<h1>About</h1>}
-
-            />
-            <Route
-                path="contact"
-                element={<h1>Contact</h1>}
-
-            />*/}
-           {/* <Route
                 path="*"
                 element={<NotFound />}
 
-            />*/}
+            />
 
 
         </Route>
