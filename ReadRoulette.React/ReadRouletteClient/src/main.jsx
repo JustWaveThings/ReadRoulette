@@ -4,6 +4,7 @@ import App from './App.jsx'
 import Layout from './Layout.jsx'
 import NotFound from './NotFound.jsx'
 import Signup from "./Signup.jsx";
+import Login from "./Login.jsx";
 import {
     createBrowserRouter, createRoutesFromElements, Route,
     RouterProvider,
@@ -32,7 +33,7 @@ const router = createBrowserRouter(
             />
             <Route
                 path="login"
-                element={<h1>Login</h1>}
+                element={<Login />}
 
             />
             <Route
