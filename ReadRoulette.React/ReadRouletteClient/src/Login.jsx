@@ -1,12 +1,14 @@
+import { Form } from 'react-router-dom'
+
 export default function Login(){
     return (
         <div>
             <h1>Login</h1>
-            <form>
+            <Form>
                 <input type="text" placeholder="Username"/>
                 <input type="password" placeholder="Password"/>
                 <input type="submit" value="Login"/>
-            </form>
+            </Form>
         </div>
     )
 }

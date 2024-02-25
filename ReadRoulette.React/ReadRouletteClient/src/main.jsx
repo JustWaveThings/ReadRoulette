@@ -23,7 +23,7 @@ const router = createBrowserRouter(
             >
             <Route
                 index
-                element={<h1>Index Route</h1>}
+                element={<App/>}
 
             />
             <Route
