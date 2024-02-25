@@ -1,5 +1,6 @@
 import {Outlet, Link} from "react-router-dom";
 import Header from "./Header.jsx";
+import Footer from "./Footer.jsx";
 
 function Layout() {
     return (
@@ -12,6 +13,7 @@ function Layout() {
                 <Link to="dashboard">Dashboard</Link>
             </nav>
             <Outlet/>
+            <Footer/>
         </div>
     )
 }
