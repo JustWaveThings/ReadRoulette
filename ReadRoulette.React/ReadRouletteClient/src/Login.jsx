@@ -2,7 +2,7 @@ import { Form } from 'react-router-dom'
 
 export default function Login(){
     return (
-        <div>
+        <div className="main">
             <h1>Login</h1>
             <Form>
                 <input type="text" placeholder="Username"/>
