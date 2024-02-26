@@ -1,4 +1,4 @@
-import {Outlet, Link} from "react-router-dom";
+import {Outlet, Link, ScrollRestoration} from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 
@@ -14,6 +14,7 @@ function Layout() {
             </nav>
             <Outlet/>
             <Footer/>
+            <ScrollRestoration/>
         </div>
     )
 }
