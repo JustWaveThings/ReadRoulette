@@ -12,6 +12,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  outline: solid 1px red;
+}
+
 body {
   height: 100vh;
   margin: 0;
@@ -42,7 +46,7 @@ a:hover {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.9rem;
   line-height: 1.1;
 }
 
@@ -81,6 +85,11 @@ nav {
   align-items: center;
 }
 
+.dash-nav {
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
 .main {
   margin: auto;
 }
@@ -91,7 +100,6 @@ nav {
     justify-content: center;
     gap: 1rem;
     max-height: 1.5rem;
-
 }
 
 .footer {
@@ -99,6 +107,18 @@ nav {
   flex-direction: column;
   justify-content: center;
   max-height: 1rem;
+
+}
+
+.dashboard {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0;
+  gap: 1rem;
+  align-items: center;
+  min-width: 80%;
 
 }
 
