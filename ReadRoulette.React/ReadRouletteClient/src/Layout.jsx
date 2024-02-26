@@ -4,7 +4,7 @@ import Footer from "./Footer.jsx";
 
 function Layout() {
     return (
-        <div>
+        <>
             <Header/>
             <nav>
                 <Link to="home">Home</Link>
@@ -15,7 +15,7 @@ function Layout() {
             <Outlet/>
             <Footer/>
             <ScrollRestoration/>
-        </div>
+        </>
     )
 }
 
