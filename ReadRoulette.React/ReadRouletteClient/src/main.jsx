@@ -16,6 +16,7 @@ import Dashboard from "./Dashboard.jsx";
 import BookList from "./BookList.jsx";
 import ManageBooklist from "./ManageBooklist.jsx";
 import ShowBooklist from "./ShowBooklist.jsx";
+import BookClubs from "./Bookclubs.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -90,7 +91,12 @@ const router = createBrowserRouter(
 
                 <Route
                     path="bookclubs"
-                    element={<h1>All BookClubs</h1>}
+                    element={<BookClubs/>}
+                    errorElement={<h1>Error</h1>}
+                >
+                <Route
+                    index
+                    element={<h1>BookClubs</h1>}
                     errorElement={<h1>Error</h1>}
                 />
                 <Route
@@ -118,6 +124,7 @@ const router = createBrowserRouter(
                     element={<NotFound/>}
                     errorElement={<h1>Error</h1>}
                 />
+                </Route>
             </Route>
         </Route>
 
