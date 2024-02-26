@@ -5,7 +5,8 @@ export default function Dashboard(){
             <h1>Dashboard</h1>
             <nav className="dash-nav">
                 <Link to="/dashboard">Profile</Link>
-                <Link to="booklist">Book List</Link>
+                <Link to="booklist">Your Book List</Link>
+                <Link to="bookclubs">Book Clubs</Link>
             </nav>
             <Outlet/>
         </div>

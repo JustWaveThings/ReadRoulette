@@ -1,3 +1,3 @@
 export default function ManageBookclub() {
-    return <h1>Manage Bookclub</h1>
+    return <h1>Manage Your Bookclub</h1>
 }

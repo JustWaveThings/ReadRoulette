@@ -97,7 +97,7 @@ const router = createBrowserRouter(
                 >
                 <Route
                     index
-                    element={<h1>BookClubs</h1>}
+                    element={<h1>ShowBookClubs</h1>}
                     errorElement={<h1>Error</h1>}
                 />
                 <Route

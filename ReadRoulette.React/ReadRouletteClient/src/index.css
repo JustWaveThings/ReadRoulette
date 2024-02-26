@@ -12,9 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  outline: solid 1px red;
-}
+
 
 body {
   height: 100vh;
@@ -30,7 +28,6 @@ body {
   flex-direction: column;
   margin: 0 auto;
   text-align: center;
-  outline: 5px solid red;
   min-height: 100%;
   min-width: 100%;
 }
