@@ -17,6 +17,7 @@ import BookList from "./BookList.jsx";
 import ManageBooklist from "./ManageBooklist.jsx";
 import ShowBooklist from "./ShowBooklist.jsx";
 import BookClubs from "./Bookclubs.jsx";
+import ManageBookclub from "./ManageBookclub.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -117,6 +118,11 @@ const router = createBrowserRouter(
                 <Route
                     path="bookclubs/:id/books/:id"
                     element={<h1>Book Club Book List Specific Book</h1>}
+                    errorElement={<h1>Error</h1>}
+                />
+                <Route
+                    path= "managebookclub"
+                    element={<ManageBookclub/>}
                     errorElement={<h1>Error</h1>}
                 />
                 <Route
