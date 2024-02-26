@@ -12,7 +12,9 @@ import {
 import './index.css'
 import requireAuth from "./requireAuth.js";
 import Dashboard from "./Dashboard.jsx";
-
+import BookList from "./BookList.jsx";
+import ManageBooklist from "./ManageBooklist.jsx";
+import ShowBooklist from "./ShowBooklist.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -59,15 +61,32 @@ const router = createBrowserRouter(
                     errorElement={<h1>Error</h1>}
                 />
                 <Route
-                    path="settings"
-                    element={<h1>Settings</h1>}
-                    errorElement={<h1>Error</h1>}
-                />
-                <Route
                     path="booklist"
-                    element={<h1>Your BookList</h1>}
+                    element={<BookList/>}
                     errorElement={<h1>Error</h1>}
-                />
+                >
+                    <Route
+                        index
+                        element={<ShowBooklist/>}
+                        errorElement={<h1>Error</h1>}
+                    />
+                    <Route
+                        path=":id"
+                        element={<h1>Book</h1>}
+                        errorElement={<h1>Error</h1>}
+                    />
+                    <Route
+                        path= "managebooklist"
+                        element={<ManageBooklist/>}
+                        errorElement={<h1>Error</h1>}
+                    />
+                    <Route
+                        path= "*"
+                        element={<NotFound/>}
+                        errorElement={<h1>Error</h1>}
+                    />
+                </Route>
+
                 <Route
                     path="bookclubs"
                     element={<h1>All BookClubs</h1>}
@@ -98,7 +117,6 @@ const router = createBrowserRouter(
                     element={<NotFound/>}
                     errorElement={<h1>Error</h1>}
                 />
-
             </Route>
         </Route>
 
