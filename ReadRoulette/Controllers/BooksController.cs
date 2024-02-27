@@ -29,11 +29,8 @@ public class BooksController(IBookService _bookService) : ControllerBase
 
     [HttpDelete("{id}")]
     [Authorize]
-    public async Task<IActionResult> Delete(int id)
-    {
-        var wasSuccessful = await _bookService.DeleteBookByIdAsync(id);
-        return Ok(wasSuccessful);
-    }
+    public async Task<IActionResult> Delete(int id) =>
+        Ok(await _bookService.DeleteBookByIdAsync(id));
 
     [HttpPost("user-book")]
     [Authorize]
@@ -45,7 +42,7 @@ public class BooksController(IBookService _bookService) : ControllerBase
     public async Task<IActionResult> RemoveUserBook(int id) =>
         Ok(await _bookService.RemoveBookFromReadListAsync(id));
 
-    [HttpPut("/user-book")]
+    [HttpPut("user-book")]
     public async Task<IActionResult> RandomizeBookList() =>
         Ok(await _bookService.RandomizeBookListAsync());
 

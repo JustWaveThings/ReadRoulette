@@ -22,6 +22,8 @@ public class Program
 
         builder.Services.AddTransient<IBookService, BookService>();
         builder.Services.AddTransient<IBookClubService, BookClubService>();
+
+        builder.Services.AddAuthentication();
         builder.Services.AddIdentityApiEndpoints<IdentityUser>()
             .AddEntityFrameworkStores<AppDbContext>();
 
