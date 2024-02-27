@@ -398,6 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 .idea/
+<<<<<<< HEAD
 
 # Netlify
 
@@ -430,3 +431,7 @@ dist-ssr
 
 
 
+=======
+# Local Netlify folder
+.netlify
+>>>>>>> 37208a848c69a8848cb2dd3436fb8f79d915f417
